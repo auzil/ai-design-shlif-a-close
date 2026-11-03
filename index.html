@@ -1,0 +1,846 @@
+<!doctype html>
+<html data-kit-panel="off" lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Установщик резьбовых вставок с предварительным сжатием — shlif</title>
+<meta name="description" content="Ручной установщик пружинных проволочных резьбовых вставок с предварительным сжатием. Один инструмент на размер, вставки длиной 1,0D–3,0D. Минск.">
+<script>if (!matchMedia("(prefers-reduced-motion: reduce)").matches) { const r = document.documentElement;
+  r.classList.add("js-motion"); setTimeout(() => r.classList.remove("js-motion"), 4000); }</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="kit/kit.css">
+<style>
+:root {
+  /* color — hues sampled from the client's tool photos; neutrals from Sigma BF */
+  --color-page: #FEFEFD;
+  --color-studio: #F2F2F0;
+  --color-studio-deep: #E6E7EA;
+  --color-ink: #2B2A30;
+  --color-ink-soft: #66656D;
+  --color-line: #D4D4D6;
+  --color-gold: #D8A42F;
+  --color-gold-light: #F1CC4B;
+  --color-gold-deep: #976329;
+  --color-gold-tint: #F3E3B4;
+  --color-steel: #D6D6DB;
+  --color-blue: #497EC0;
+  --color-graphite: #1E1E22;
+  --color-on-dark: #EDEDEA;
+  --color-on-dark-soft: #A4A3AA;
+
+  /* type */
+  --font-sans: "Onest", system-ui, sans-serif;
+  --font-display: "Onest", system-ui, sans-serif;
+  --text-display: clamp(2.125rem, 1.45rem + 2.9vw, 4rem);
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.03em;
+  --text-display--font-weight: 400;
+  --text-h2: clamp(1.375rem, 1.15rem + 0.9vw, 2.125rem);
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: 0.03em;
+  --text-h2--font-weight: 400;
+  --text-h3: 1.0625rem;
+  --text-h3--line-height: 1.35;
+  --text-h3--letter-spacing: 0;
+  --text-h3--font-weight: 600;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.5;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-ui: 0.8125rem;
+  --text-ui--font-weight: 400;
+  --text-fine: 0.8125rem;
+  --text-figure: clamp(2.5rem, 2rem + 2vw, 3.75rem);
+
+  /* layout */
+  --gutter: 1rem;
+  --container-page: 90rem;
+  --container-content: 35rem;
+  --header-row: 3rem;
+  --header-h: 3.5rem;
+  --space-section: clamp(6rem, 3.5rem + 9vw, 14rem);
+  --space-block: clamp(2.5rem, 1.5rem + 4vw, 5.5rem);
+  --space-text: 1.25rem;
+  --radius: 0;
+  --radius-button: 3px;
+
+  /* motion (mirrors MOTION in motion.js) */
+  --motion-fast: 300ms;
+  --motion-base: 600ms;
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+html.js-motion [data-motion-hide] { visibility: hidden; }
+
+body { background: var(--color-page); color: var(--color-ink); font-feature-settings: "kern"; }
+.tabular, .fig, .tel { font-variant-numeric: tabular-nums; }
+a { text-decoration-thickness: 1px; text-underline-offset: 0.22em; }
+.t-h2 { text-transform: uppercase; }
+
+/* ---------- buttons & links ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+  min-height: 3.25rem; padding: 0 1.75rem; border: 0; border-radius: var(--radius-button);
+  background: var(--color-ink); color: var(--color-page); cursor: pointer;
+  font-size: var(--text-body); font-weight: 500; line-height: 1; text-decoration: none;
+  transition: background-color var(--motion-fast) var(--ease-out);
+}
+.btn:hover { background: var(--color-graphite); }
+.btn:focus-visible { outline: 2px solid var(--color-blue); outline-offset: 3px; }
+.btn--sm { min-height: 2.125rem; padding: 0 .9rem; font-size: var(--text-ui); font-weight: 500; }
+.link { color: inherit; text-decoration: underline; text-decoration-color: var(--color-line); transition: text-decoration-color var(--motion-fast); }
+.link:hover { text-decoration-color: currentColor; }
+
+/* ---------- header (Sigma: two rows, centred wordmark; row 2 stays) ---------- */
+.site-header { position: sticky; top: calc(-1 * var(--header-row)); z-index: 40; background: var(--color-page); }
+.hdr-row {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  height: var(--header-row); padding-inline: var(--gutter);
+  font-size: var(--text-ui); letter-spacing: .02em; text-transform: uppercase;
+}
+.hdr-row a, .hdr-row button { color: var(--color-ink); text-decoration: none; }
+.hdr-row a:hover { text-decoration: underline; }
+.hdr-row a.btn { color: var(--color-page); text-decoration: none; }
+.hdr-nav { display: flex; gap: 1rem; }
+.hdr-right { display: flex; justify-content: flex-end; align-items: center; gap: 1rem; }
+.wordmark { font-size: 1.625rem; font-weight: 500; letter-spacing: -0.035em; text-transform: none; line-height: 1; }
+.wordmark:hover { text-decoration: none !important; }
+.hdr-menu { background: none; border: 0; padding: .75rem 0; margin: -.75rem 0; text-transform: uppercase; letter-spacing: .02em; font-size: var(--text-ui); cursor: pointer; }
+.hdr-row--sub { grid-template-columns: 1fr auto; }
+.only-desk { display: none; }
+@media (min-width: 64rem) {
+  .only-desk { display: initial; }
+  .only-mob { display: none !important; }
+  .hdr-nav.only-desk, .hdr-right .only-desk { display: flex; }
+}
+
+/* ---------- drawings (our own hairline technical drawings) ---------- */
+/* 1 px graphite hairlines; the panel colour only hides what is behind (no visible fills).
+   Colour is kept for the part being explained: the gold bushing and the blue insert. */
+.svg-defs { position: absolute; width: 0; height: 0; }
+.stop-gold { stop-color: var(--color-gold); }
+.stop-gold-light { stop-color: var(--color-gold-light); }
+.drw { overflow: visible; }
+.drw * { vector-effect: non-scaling-stroke; }
+.d-axis { stroke: var(--color-ink-soft); stroke-width: 1; stroke-dasharray: 16 5 2 5; opacity: .45; fill: none; }
+.d-body, .d-rod { fill: var(--color-studio); stroke: var(--color-ink); stroke-width: 1; }
+.d-gold { fill: url(#g-gold); stroke: var(--color-ink); stroke-width: 1; }
+.d-cavity { display: none; }
+.d-knurl { stroke: var(--color-ink); stroke-width: 1; opacity: .2; fill: none; }
+.d-engrave { font: 500 10px var(--font-sans); fill: var(--color-ink-soft); letter-spacing: .08em; }
+.d-part { fill: none; stroke: var(--color-ink); stroke-width: 1; }
+.d-thin { fill: none; stroke: var(--color-ink); stroke-width: 1; }
+.d-dim { fill: none; stroke: var(--color-ink-soft); stroke-width: 1; stroke-dasharray: 3 3; }
+.coil-front { fill: none; stroke: var(--color-blue); stroke-width: 1.5; }
+.coil-back { fill: none; stroke: var(--color-blue); stroke-width: 1; opacity: .45; }
+.coil-wire { fill: var(--color-blue); }
+.coil-tang { fill: none; stroke: var(--color-blue); stroke-width: 2; }
+
+/* callouts (Sigma tile 04): 1 px leader, dot on the part, small sentence-case label, no box */
+.co { position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; --len: 3.25rem; }
+.co::after { content: ""; position: absolute; left: -2.5px; top: -2.5px; width: 5px; height: 5px; border-radius: 50%; background: var(--color-ink); }
+.co__lead { position: absolute; left: 0; width: 1px; height: var(--len); background: var(--color-ink); transform-origin: 0 100%; }
+.co--up .co__lead { bottom: 0; }
+.co--down .co__lead { top: 0; transform-origin: 0 0; }
+.co__label {
+  position: absolute; width: max-content; max-width: 14.5rem;
+  font-size: var(--text-fine); line-height: 1.35; color: var(--color-ink);
+}
+.co--up .co__label { bottom: calc(var(--len) + .45rem); }
+.co--down .co__label { top: calc(var(--len) + .45rem); }
+.co[data-align="start"] .co__label { left: -2px; }
+.co[data-align="center"] .co__label { left: 0; transform: translateX(-50%); text-align: center; }
+.co[data-align="end"] .co__label { right: -1px; text-align: right; }
+
+/* ---------- hero ---------- */
+.hero__panel {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  min-height: calc(100svh - 2 * var(--header-row));
+  background: var(--color-studio);
+  padding: 1.25rem var(--gutter) 1.5rem;
+}
+/* the business end at 2–2.5× scale; the rest of the tool runs off the right edge */
+.hero__stage { flex: 1 0 auto; display: flex; align-items: center; padding-block: 3.5rem 3.75rem; }
+.hero__drawing { position: relative; flex: none; width: max(68rem, 200vw); aspect-ratio: 1120 / 120; }
+.hero__drawing svg { display: block; width: 100%; height: auto; }
+.hero__drawing .co--more { display: none; }
+.co--deep { --len: 3rem; }
+.co--nest .co__label { max-width: 8.5rem; }
+.hero__copy { display: grid; gap: 1.25rem; margin-top: auto; }
+.hero h1 { color: var(--color-ink); }
+.hero__aside { display: grid; gap: 1rem; }
+.hero__lead { font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height); color: var(--color-ink); max-width: 30rem; }
+.hero__fact { color: var(--color-ink-soft); max-width: 30rem; }
+.hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem 1.5rem; margin-top: .25rem; }
+.hero__actions .tel { font-size: var(--text-body); }
+@media (min-width: 64rem) {
+  .hero__panel { padding: 2rem clamp(2rem, 4vw, 4rem) clamp(2rem, 4vw, 3.5rem); }
+  .hero__stage { padding-block: 4.5rem 4.5rem; }
+  .hero__drawing .co--more { display: block; }
+  .co--deep { --len: 6rem; }
+  .co--rod { --len: 7.4rem; }
+  .co--nest .co__label { max-width: 14.5rem; }
+  .hero__copy { grid-template-columns: 1fr minmax(0, 27rem); align-items: end; column-gap: 4rem; }
+}
+
+/* ---------- page rhythm (Sigma: centred title, short centred body, panels, long silences) ---------- */
+.sec { margin-top: var(--space-section); }
+.sec-head { max-width: var(--container-content); margin-inline: auto; padding-inline: var(--gutter); text-align: center; }
+.sec-head > * + * { margin-top: var(--space-text); }
+.sec-head p { color: var(--color-ink); }
+.sec-head--narrow { max-width: 30rem; }
+.sec-head--narrow p { text-align: left; }
+.sec > * + * { margin-top: var(--space-block); }
+.statement { text-align: center; }
+.statement .t-display { margin-inline: auto; }
+
+.panel { position: relative; background: var(--color-studio); margin-inline: var(--gutter); overflow: hidden; }
+.duo { display: grid; gap: var(--gutter); padding-inline: var(--gutter); }
+.duo .panel { margin: 0; aspect-ratio: 1; display: grid; place-items: center; }
+@media (min-width: 48rem) { .duo { grid-template-columns: 1fr 1fr; } }
+.duo figure { display: grid; gap: 1.25rem; align-content: start; }
+.cap { display: grid; gap: .35rem; max-width: 26rem; padding-inline: .25rem; }
+.cap p { color: var(--color-ink-soft); }
+.panel .drw { width: 78%; height: auto; }
+/* article photos are shown as photos: they fill a fixed-ratio frame, no grey mat around them */
+.photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: var(--color-studio); }
+.photo--wide { aspect-ratio: 3 / 2; }
+.duo .panel--photo { aspect-ratio: 4 / 3; }
+.duo .panel--wide, .duo--narrow .photo { aspect-ratio: 2.2 / 1; } /* crops the white bands above and below the marking photo */
+.panel--wide .drw { width: 100%; height: 100%; }
+.duo--narrow { max-width: 62rem; margin-inline: auto; }
+.fine { font-size: var(--text-fine); color: var(--color-ink-soft); }
+
+/* compression panels */
+.d-arrow { fill: none; stroke: var(--color-ink); stroke-width: 1.25; }
+.d-note { font: 400 7px var(--font-sans); fill: var(--color-ink); }
+
+/* anatomy */
+.wide { padding: clamp(4.5rem, 9vw, 9rem) .5rem clamp(4.5rem, 8vw, 8rem); }
+.wide__drawing { position: relative; width: 100%; aspect-ratio: 1120 / 300; } /* phones: the whole tool fits; the parts list below names each part */
+.panel .wide__drawing svg { width: 100%; height: auto; }
+.wide__drawing .co { display: none; }
+@media (max-width: 63.99rem) { .wide__drawing .d-knurl { display: none; } } /* too dense at phone scale */
+.elev-rod, .elev-body, .elev-coil { transition: transform var(--motion-base) var(--ease-in-out), opacity var(--motion-base) var(--ease-in-out); }
+.is-apart .elev-rod { transform: translateY(130px); }
+.is-apart .elev-coil { opacity: 0; }
+.is-fork .elev-rod { transform: translateY(120px); }
+.is-fork .elev-body, .is-fork .elev-coil, .is-fork .d-cavity { opacity: .14; }
+@media (min-width: 64rem) {
+  .wide { padding-inline: 0; }
+  .wide__drawing { width: min(92%, 84rem); margin-inline: auto; }
+  .wide__drawing .co { display: block; }
+}
+ul.parts { display: grid; gap: 1.5rem var(--gutter); padding-inline: var(--gutter); max-width: var(--container-page); margin-inline: auto; list-style: none; }
+.parts li { display: grid; gap: .35rem; align-content: start; border-top: 1px solid var(--color-line); padding-top: 1rem; }
+.parts p { color: var(--color-ink-soft); }
+@media (min-width: 48rem) { .parts { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 64rem) { .parts { grid-template-columns: repeat(4, 1fr); } }
+
+/* ---------- Восемь движений ---------- */
+.steps__part + .steps__part { margin-top: var(--space-block); }
+.steps__group { text-align: center; font-size: var(--text-h3); font-weight: 400; color: var(--color-ink-soft); margin-bottom: 1.5rem; }
+/* 8 static cards: reduced motion and no-JS only (drawing | photo, side by side) */
+ol.steps__list { display: grid; gap: 2rem var(--gutter); padding-inline: var(--gutter); list-style: none; }
+.step-card { display: grid; gap: .4rem; align-content: start; }
+.step-card__fig { display: grid; grid-template-columns: 1fr 1fr; height: 13rem; background: var(--color-studio); margin-bottom: .6rem; overflow: hidden; }
+.step-card__drw { min-height: 0; }
+.step-card__drw svg { display: block; width: 100%; height: 100%; overflow: hidden; }
+.step-card__media { display: block; width: 100%; height: 100%; min-height: 0; object-fit: cover; }
+.step-card__media--drw { display: grid; place-items: center; background: var(--color-page); }
+.step-card__media--drw svg { width: 88%; height: auto; }
+.step-card__num { font-size: var(--text-h3); color: var(--color-ink-soft); }
+.step-card p:last-child { color: var(--color-ink); }
+@media (min-width: 48rem) { .steps__list { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 64rem) {
+  .steps__list { grid-template-columns: repeat(4, 1fr); }
+  .step-card__fig { grid-template-columns: 1fr; grid-template-rows: 15rem 11rem; height: auto; }
+}
+
+/* the stage: phones = one tap/swipe card; desktop = pinned and scrubbed (motion.js) */
+.stage { display: none; }
+.is-staged .stage { display: block; }
+.is-staged .steps__parts { display: none; }
+.stage__panel {
+  position: relative; margin-inline: var(--gutter); background: var(--color-studio);
+  display: grid; gap: 1.25rem; padding: .5rem 1rem 1.5rem;
+  grid-template-areas: "nav" "drawing" "texts" "photos";
+}
+.stage__drawing { grid-area: drawing; position: relative; height: min(21rem, 48svh); overflow: hidden; touch-action: pan-y; }
+.stage__drawing svg { display: block; width: 100%; height: 100%; overflow: hidden; }
+.stage__texts { grid-area: texts; }
+.stage__photos { grid-area: photos; }
+.stage__texts, .stage__photos { display: grid; }
+.stage__t, .stage__ph { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity var(--motion-fast) var(--ease-out), visibility 0s var(--motion-fast); }
+.stage__t.is-active, .stage__ph.is-active { opacity: 1; visibility: visible; transition-delay: 0s; }
+.stage__t { display: grid; align-content: start; gap: .5rem; }
+.stage__group { color: var(--color-ink-soft); }
+.stage__num { font-size: var(--text-figure); font-weight: 300; line-height: 1; letter-spacing: -.02em; }
+.stage__num span { font-size: var(--text-body); color: var(--color-ink-soft); letter-spacing: 0; margin-left: .35rem; }
+.stage__t p:last-child { font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height); }
+.stage__ph { margin: 0; }
+.stage__ph .step-card__media { height: auto; aspect-ratio: 3 / 2; }
+.stage__nav { grid-area: nav; display: flex; justify-content: center; }
+.stage__nav button {
+  min-width: 2.5rem; min-height: 2.75rem; background: none; border: 0; cursor: pointer; color: var(--color-ink-soft);
+  font-size: var(--text-body); font-variant-numeric: tabular-nums; border-bottom: 1px solid transparent;
+}
+@media (min-width: 64rem) {
+  .stage__panel {
+    height: calc(100vh - var(--header-row) - var(--gutter));
+    grid-template-columns: 1fr 1.6fr 1fr; grid-template-areas: "texts drawing photos"; align-items: center;
+    column-gap: clamp(2rem, 4vw, 4rem); padding: 2.5rem clamp(2rem, 4vw, 4rem) 5.5rem;
+  }
+  .stage__drawing { height: 100%; align-self: stretch; }
+  .stage__t { align-content: center; max-width: 24rem; }
+  .stage__ph { justify-self: end; width: min(100%, 22rem); }
+  .stage__ph .step-card__media { aspect-ratio: 4 / 3; }
+  .stage__nav { position: absolute; left: 50%; bottom: 1.75rem; transform: translateX(-50%); }
+  .stage__nav button { min-width: 2.75rem; }
+}
+.stage__nav button[aria-current="step"] { color: var(--color-ink); border-bottom-color: var(--color-ink); }
+.stage__nav button:hover { color: var(--color-ink); }
+.cta-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem 1.5rem; padding-inline: var(--gutter); }
+
+/* flush detail */
+.co--onpanel { --len: 3rem; }
+
+/* ---------- the one dark band (Hasselblad figures row) ---------- */
+.band { margin-top: var(--space-section); }
+.band__panel { position: relative; margin-inline: var(--gutter); background: var(--color-graphite); color: var(--color-on-dark); overflow: hidden; }
+.band__img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 60% 50%; }
+.band__img { -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 92%); mask-image: linear-gradient(to bottom, #000 45%, transparent 92%); }
+.figs { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 1rem; padding: 2rem 1.25rem 3.5rem; text-align: center; }
+.figs div { display: grid; gap: .6rem; align-content: start; justify-items: center; }
+.figs .fig { font-size: var(--text-figure); font-weight: 300; line-height: 1; letter-spacing: -.02em; white-space: nowrap; }
+.fig small { font-size: .4em; letter-spacing: 0; margin-left: .2em; color: var(--color-on-dark-soft); }
+.figs p { font-size: .9375rem; line-height: 1.45; color: var(--color-on-dark); opacity: .82; max-width: 15rem; }
+@media (min-width: 48rem) {
+  .band__img { aspect-ratio: 21 / 9; }
+  .figs { grid-template-columns: repeat(4, 1fr); max-width: 72rem; margin: -4rem auto 0; padding: 0 2rem 5rem; }
+}
+
+/* ---------- two in one ---------- */
+.toggle { position: absolute; top: 1.25rem; left: 50%; transform: translateX(-50%); display: flex; gap: 1.25rem; z-index: 2; }
+.toggle button { background: none; border: 0; padding: .75rem 0; cursor: pointer; color: var(--color-ink-soft); font-size: var(--text-body); border-bottom: 1px solid transparent; white-space: nowrap; }
+.toggle button[aria-pressed="true"] { color: var(--color-ink); border-bottom-color: var(--color-ink); }
+.fork__label { position: absolute; left: 0; right: 0; bottom: 1.5rem; text-align: center; color: var(--color-ink); padding-inline: 1rem; }
+.split { display: grid; gap: 1rem var(--gutter); max-width: 62rem; margin-inline: auto; padding: 1.5rem var(--gutter) 0; border-top: 1px solid var(--color-line); }
+.split p { color: var(--color-ink); max-width: 36rem; }
+@media (min-width: 48rem) { .split { grid-template-columns: 1fr 2fr; margin-inline: auto; } }
+.sec .split { margin-inline: var(--gutter); }
+@media (min-width: 66rem) { .sec .split { margin-inline: auto; } }
+
+/* sizes */
+/* the photo's white backdrop is pushed to pure white, so multiply leaves exactly the panel grey;
+   the tools are cut by the photo's top edge, so the photo sits flush with the panel's top edge */
+.lineup { display: grid; justify-items: center; padding: 0 1rem clamp(3rem, 6vw, 6rem); }
+.lineup img { width: min(100%, 56rem); height: auto; mix-blend-mode: multiply; filter: brightness(1.05) contrast(1.05);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 9%); mask-image: linear-gradient(to right, transparent, #000 9%); }
+
+/* ---------- request ---------- */
+.request { display: grid; gap: var(--space-block) var(--gutter); padding: 2rem var(--gutter) 0; max-width: var(--container-page); margin-inline: auto; }
+.request__intro { display: grid; gap: var(--space-text); align-content: start; }
+.contacts { display: grid; gap: 1.25rem; margin-top: 1rem; }
+.contacts div { display: grid; gap: .2rem; }
+.contacts dt { color: var(--color-ink-soft); font-size: var(--text-fine); }
+.contacts dd a { color: inherit; }
+.form { background: var(--color-studio); padding: clamp(1.5rem, 3vw, 3rem); display: grid; gap: 1.25rem; align-content: start; }
+.form__progress { color: var(--color-ink-soft); font-size: var(--text-fine); }
+.form [data-step] { display: grid; gap: 1.25rem; }
+.field { display: grid; gap: .45rem; }
+.field label { font-size: var(--text-fine); color: var(--color-ink-soft); }
+.field input, .field textarea {
+  width: 100%; min-height: 3.25rem; padding: .8rem 1rem; border: 1px solid var(--color-line); border-radius: var(--radius-button);
+  background: var(--color-page); color: var(--color-ink); font-size: var(--text-body);
+}
+.field input:focus, .field textarea:focus { outline: 2px solid var(--color-blue); outline-offset: 0; border-color: transparent; }
+.field input:user-invalid { border-color: var(--color-ink); }
+.consent { display: flex; gap: .65rem; align-items: flex-start; font-size: var(--text-fine); color: var(--color-ink-soft); line-height: 1.45; }
+.consent input { width: 1.125rem; height: 1.125rem; margin: .1rem 0 0; accent-color: var(--color-ink); }
+.form__nav { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+.btn--ghost { background: none; color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-line); padding-inline: .25rem; }
+.btn--ghost:hover { background: none; text-decoration-color: currentColor; }
+@media (min-width: 64rem) { .request { grid-template-columns: 1fr 1fr; column-gap: clamp(3rem, 8vw, 9rem); padding-inline: clamp(1rem, 4vw, 4rem); } }
+
+/* ---------- footer ---------- */
+.footer { margin-top: var(--space-section); padding: 2rem var(--gutter) 6.5rem; border-top: 1px solid var(--color-line); display: grid; gap: 1rem; font-size: var(--text-fine); color: var(--color-ink-soft); }
+.footer .wordmark { color: var(--color-ink); text-decoration: none; }
+@media (min-width: 64rem) { .footer { grid-template-columns: auto 1fr auto; align-items: center; gap: 3rem; padding-bottom: 2rem; } }
+
+/* ---------- floating contact, sticky CTA, menu ---------- */
+/* desktop only, after the hero (phones have the sticky bar with Позвонить; contacts are in the menu) */
+.fab { position: fixed; right: var(--gutter); bottom: 1.5rem; z-index: 45; display: none; justify-items: end; gap: .5rem; }
+@media (min-width: 64rem) {
+  .fab { display: grid; opacity: 0; visibility: hidden; translate: 0 .5rem;
+    transition: opacity var(--motion-fast) var(--ease-out), translate var(--motion-fast) var(--ease-out), visibility 0s var(--motion-fast); }
+  .fab.is-shown { opacity: 1; visibility: visible; translate: 0 0; transition-delay: 0s; }
+}
+.fab__btn { min-height: 3rem; padding: 0 1.25rem; border-radius: var(--radius); border: 1px solid var(--color-line); background: var(--color-page); color: var(--color-ink); cursor: pointer; font-size: var(--text-ui); text-transform: uppercase; letter-spacing: .02em; }
+.fab__panel { background: var(--color-page); border: 1px solid var(--color-line); padding: 1rem 1.25rem; display: grid; gap: .65rem; min-width: 15rem; }
+.fab__panel[hidden] { display: none; }
+.fab__panel a { color: var(--color-ink); }
+.fab__panel p { font-size: var(--text-fine); color: var(--color-ink-soft); }
+.sticky-cta { display: flex; gap: .5rem; padding: .625rem var(--gutter) calc(.625rem + env(safe-area-inset-bottom)); background: var(--color-page); border-top: 1px solid var(--color-line); }
+.sticky-cta .btn { flex: 1; }
+.sticky-cta .btn--ghost { flex: 0 0 auto; }
+.menu { background: var(--color-page); padding: 0 var(--gutter) 2rem; display: grid; align-content: start; }
+.menu__top { display: flex; justify-content: space-between; align-items: center; height: var(--header-row); font-size: var(--text-ui); text-transform: uppercase; letter-spacing: .02em; }
+.menu__top button { background: none; border: 0; padding: .75rem 0; cursor: pointer; font-size: inherit; text-transform: inherit; letter-spacing: inherit; color: var(--color-ink); }
+.menu nav { display: grid; margin-top: 2rem; }
+.menu nav a { font-size: var(--text-h2); line-height: 1.2; letter-spacing: -.01em; padding: .55rem 0; text-decoration: none; color: var(--color-ink); border-bottom: 1px solid var(--color-line); }
+.menu__contacts { margin-top: 2rem; display: grid; gap: .5rem; }
+</style>
+  <meta name="robots" content="noindex">
+  <meta name="kit-source" content="shlif-inserts a-close">
+  <meta property="og:title" content="Установщик резьбовых вставок с предварительным сжатием — shlif">
+  <meta property="og:description" content="Ручной установщик пружинных проволочных резьбовых вставок с предварительным сжатием. Один инструмент на размер, вставки длиной 1,0D–3,0D. Минск.">
+  <meta property="og:image" content="og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="k-skip btn btn--sm" href="#main">К содержанию</a>
+<svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" class="stop-gold-light"/><stop offset=".6" class="stop-gold"/><stop offset="1" class="stop-gold-light"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <div class="hdr-row">
+    <nav class="hdr-nav only-desk" aria-label="Разделы">
+      <a href="#ustroystvo">Устройство</a>
+      <a href="#vosem">Как работает</a>
+      <a href="#razmery">Размеры</a>
+      <a href="#podobrat">Контакты</a>
+    </nav>
+    <div class="only-mob"><button class="hdr-menu" type="button" data-menu-open="menu" aria-controls="menu" aria-expanded="false">Меню</button></div>
+    <a class="wordmark" href="#top" aria-label="shlif — на главную" data-placeholder="wordmark">shlif</a>
+    <div class="hdr-right">
+      <a class="tel only-desk" href="tel:+375173555442">+375 17 355-54-42</a>
+      <a class="only-mob" href="tel:+375173555442">Позвонить</a>
+    </div>
+  </div>
+  <div class="hdr-row hdr-row--sub">
+    <span><span class="only-desk">Установщик резьбовых вставок</span><span class="only-mob">Установщик вставок</span></span>
+    <div class="hdr-right">
+      <a href="#vosem">Восемь движений</a>
+      <a class="btn btn--sm only-desk" href="#podobrat">Подобрать</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section id="top" class="hero" data-section="hero" data-hero>
+  <div class="hero__panel">
+    <div class="hero__stage">
+    <div class="hero__drawing">
+      <svg class="drw" data-elevation-source viewBox="20 80 1120 120" role="img" aria-label="Установщик сбоку: обжимная втулка, гнездо со вставкой, корпус с накаткой, шток с рукояткой">
+        <line class="d-axis" x1="24" y1="140" x2="1136" y2="140"/>
+        <g data-part="rod" class="elev-rod">
+          <path class="d-rod" d="M40 131H340L360 128H1010V132H1036V148H1010V152H360L340 149H40Z"/>
+          <path class="d-thin" d="M40 137.5H52V142.5H40"/>
+          <rect class="d-rod" x="1018" y="44" width="9" height="88"/>
+          <rect class="d-rod" x="1012" y="24" width="106" height="24" rx="12"/>
+        </g>
+        <g data-part="coil" class="elev-coil"></g>
+        <g data-part="body" class="elev-body">
+          <path class="d-body" fill-rule="evenodd" d="M134 104H332V176H134ZM174 118H292A22 22 0 0 1 292 162H174A22 22 0 0 1 174 118Z"/>
+          <rect class="d-body" x="332" y="100" width="42" height="80"/>
+          <rect class="d-body" x="374" y="102" width="426" height="76"/>
+          <path class="d-knurl" data-knurl="378 436 102 178"/>
+          <path class="d-knurl" data-knurl="556 798 102 178"/>
+          <text class="d-engrave" x="496" y="144" text-anchor="middle">ST8×1,25</text>
+          <path class="d-body" d="M800 106H808L812 112V168L808 174H800Z"/>
+          <path class="d-gold" d="M62 106L68 98H134V182H68L62 174Z"/>
+          <path class="d-thin" d="M68 98V182M124 98V182"/>
+        </g>
+      </svg>
+      <div class="co co--up" data-align="start" style="--x:6.96%; --y:15%" data-motion="callout" data-motion-hide>
+        <span class="co__lead"></span><span class="co__label">Втулка сжимает вставку</span>
+      </div>
+      <div class="co co--down co--deep co--rod" data-align="start" style="--x:2.32%; --y:57.5%" data-motion="callout" data-motion-hide>
+        <span class="co__lead"></span><span class="co__label">Шток работает и как вилка</span>
+      </div>
+      <div class="co co--down co--deep co--nest" data-align="start" style="--x:19.2%; --y:65%" data-motion="callout" data-motion-hide>
+        <span class="co__lead"></span><span class="co__label">Гнездо для вставок 1,0D–3,0D</span>
+      </div>
+      <div class="co co--up co--more" data-align="center" style="--x:42.5%; --y:18.3%" data-motion="callout" data-motion-hide>
+        <span class="co__lead"></span><span class="co__label">Размер выгравирован на корпусе</span>
+      </div>
+    </div>
+    </div>
+
+    <div class="hero__copy">
+      <h1 class="t-display" data-reveal="lines" data-reveal-load><span class="line">Резьбовая вставка</span> <span class="line">встаёт ровно</span> <span class="line">с первого раза</span></h1>
+      <div class="hero__aside">
+        <p class="hero__lead">Ручной установщик с предварительным сжатием. Вставка сжимается во втулке и входит в отверстие без усилия — перпендикулярно и соосно.</p>
+        <p class="hero__fact">Один инструмент — один размер. Брак при установке практически исключён, особенно на мелких вставках.</p>
+        <div class="hero__actions">
+          <a class="btn" href="#podobrat">Подобрать установщик</a>
+          <a class="tel link" href="tel:+375173555442">+375 17 355-54-42</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Сначала сжать: the principle -->
+<section id="szhatie" class="sec" data-section="principle">
+  <div class="sec-head statement">
+    <h2 class="t-display" data-reveal="lines"><span class="line">Сначала сжать,</span> <span class="line">потом вкрутить</span></h2>
+    <p>Вилочным установщиком вставку закручивают в отверстие как есть. Мелкие вставки при этом идут с перекосом или повреждаются — это брак. Здесь вставка сначала сжимается в обжимной втулке, а широкий торец втулки держит инструмент перпендикулярно детали.</p>
+  </div>
+  <div class="duo">
+    <figure>
+      <div class="panel">
+        <svg class="drw" viewBox="0 100 400 280" aria-hidden="true">
+          <line class="d-axis" x1="200" y1="110" x2="200" y2="372"/>
+          <path class="d-part" data-hole="left" data-top="236" data-bottom="372"/>
+          <path class="d-part" data-hole="right" data-top="236" data-bottom="372"/>
+          <g data-coil-static="150 7 21"></g>
+          <path class="d-dim" d="M179 226V300M221 226V300"/>
+        </svg>
+      </div>
+      <figcaption class="cap"><h3 class="t-h3">Без сжатия</h3><p>Наружный диаметр вставки больше резьбы отверстия. Её вкручивают как есть — и мелкая вставка легко встаёт криво.</p></figcaption>
+    </figure>
+    <figure>
+      <div class="panel" data-motion="compress">
+        <svg class="drw" viewBox="0 100 400 280" aria-hidden="true">
+          <line class="d-axis" x1="200" y1="110" x2="200" y2="372"/>
+          <path class="d-part" data-hole="left" data-top="236" data-bottom="372"/>
+          <path class="d-part" data-hole="right" data-top="236" data-bottom="372"/>
+          <path class="d-gold" d="M154 140H185V222H160L154 216Z"/>
+          <path class="d-gold" d="M215 140H246V216L240 222H215Z"/>
+          <g data-part="coil-squeezed"></g>
+          <g data-part="press" data-dir="1"><path class="d-arrow" d="M104 181H140M132 175L141 181L132 187"/></g>
+          <g data-part="press" data-dir="-1"><path class="d-arrow" d="M296 181H260M268 175L259 181L268 187"/></g>
+          <path class="d-dim" d="M185 226V300M215 226V300"/>
+        </svg>
+      </div>
+      <figcaption class="cap"><h3 class="t-h3">Со сжатием</h3><p>Во втулке вставка сжимается и становится меньше резьбы отверстия. В деталь она входит без усилия и там разжимается.</p></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Устройство -->
+<section id="ustroystvo" class="sec" data-section="anatomy">
+  <div class="panel wide">
+    <div class="wide__drawing is-apart" data-anatomy>
+      <div class="co co--up" data-align="start" style="--x:6.96%; --y:26%"><span class="co__lead"></span><span class="co__label">Обжимная втулка</span></div>
+      <div class="co co--up" data-align="start" style="--x:19%; --y:32.7%; --len:6rem"><span class="co__lead"></span><span class="co__label">Гнездо для вставки</span></div>
+      <div class="co co--up" data-align="center" style="--x:48.2%; --y:27.3%"><span class="co__lead"></span><span class="co__label">Корпус с продольным каналом</span></div>
+      <div class="co co--up" data-align="end" style="--x:93.3%; --y:44.7%"><span class="co__lead"></span><span class="co__label">Приводная рукоятка</span></div>
+      <div class="co co--down" data-align="start" style="--x:2.3%; --y:83.3%; --len:2.5rem"><span class="co__lead"></span><span class="co__label">Прорезь под хвостовик вставки</span></div>
+      <div class="co co--down" data-align="center" style="--x:60.7%; --y:87.3%; --len:2.5rem"><span class="co__lead"></span><span class="co__label">Установочный шток</span></div>
+    </div>
+  </div>
+  <div class="sec-head">
+    <h2 class="t-h2">Устройство</h2>
+    <p>Корпус с продольным каналом и открытым гнездом, обжимная втулка в его торце и установочный шток с приводной рукояткой.</p>
+  </div>
+  <ul class="parts" role="list">
+    <li><h3 class="t-h3">Обжимная втулка</h3><p>Закреплена в торце корпуса. Внутри неё вставка сжимается, а широкий наружный торец прижимают к детали.</p></li>
+    <li><h3 class="t-h3">Гнездо</h3><p>Открытый участок канала. Принимает вставку любой длины от <span class="tabular">1,0D</span> до <span class="tabular">3,0D</span>.</p></li>
+    <li><h3 class="t-h3">Корпус</h3><p>С продольным каналом и накаткой. Размер вставки выгравирован на нём.</p></li>
+    <li><h3 class="t-h3">Шток с рукояткой</h3><p>Прорезь на конце штока захватывает хвостовик вставки. Шток вынимается из корпуса.</p></li>
+  </ul>
+  <div class="duo">
+    <figure>
+      <img class="photo" src="media/02-bushing-closeup.jpg" width="903" height="639" alt="Обжимная втулка с внутренней резьбой и открытое гнездо" loading="lazy">
+      <figcaption class="cap fine">Обжимная втулка и гнездо. Фото из статьи shlif.by</figcaption>
+    </figure>
+    <figure>
+      <img class="photo" src="media/02-rod-slot-with-tang.jpg" width="439" height="505" alt="Прорезь на конце штока держит хвостовик вставки" loading="lazy" style="object-position: 50% 45%">
+      <figcaption class="cap fine">Прорезь штока держит хвостовик вставки</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Восемь движений (signature) -->
+<section id="vosem" class="sec steps" data-section="steps" data-steps-section>
+  <div class="sec-head">
+    <h2 class="t-h2">Восемь движений</h2>
+    <p>Четыре — в руке, не касаясь детали. Ещё четыре — у детали. Чертёж показывает, что в это время происходит внутри инструмента.</p>
+  </div>
+  <div class="stage" data-stage>
+    <div class="stage__panel">
+      <div class="stage__texts" data-stage-texts></div>
+      <div class="stage__drawing" data-stage-drawing></div>
+      <div class="stage__photos" data-stage-photos></div>
+      <nav class="stage__nav" aria-label="Шаги установки" data-stage-nav></nav>
+    </div>
+  </div>
+  <div class="steps__parts">
+    <div class="steps__part">
+      <h3 class="steps__group">В руке, не касаясь детали</h3>
+      <ol class="steps__list" role="list">
+        <li class="step-card" data-group="В руке, не касаясь детали">
+          <div class="step-card__fig"><div class="step-card__drw" data-cutaway-state="1"></div><img class="step-card__media" src="media/02-bushing-closeup.jpg" width="903" height="639" alt="Открытое гнездо и обжимная втулка" loading="lazy"></div>
+          <p class="step-card__num tabular">1</p><h4 class="t-h3">Открыть гнездо</h4><p>Отведите шток назад — гнездо откроется.</p>
+        </li>
+        <li class="step-card" data-group="В руке, не касаясь детали">
+          <div class="step-card__fig"><div class="step-card__drw" data-cutaway-state="2"></div><img class="step-card__media" src="media/03-step-insert-in-nest.jpg" width="452" height="321" alt="Вставка лежит в гнезде хвостовиком к втулке" loading="lazy"></div>
+          <p class="step-card__num tabular">2</p><h4 class="t-h3">Вложить вставку</h4><p>Положите вставку в гнездо хвостовиком к обжимной втулке.</p>
+        </li>
+        <li class="step-card" data-group="В руке, не касаясь детали">
+          <div class="step-card__fig"><div class="step-card__drw" data-cutaway-state="3"></div><img class="step-card__media" src="media/03-step-hold-with-finger.jpg" width="555" height="398" alt="Вставку придерживают пальцем, пока шток захватывает хвостовик" loading="lazy"></div>
+          <p class="step-card__num tabular">3</p><h4 class="t-h3">Захватить хвостовик</h4><p>Подайте шток вперёд и поворачивайте, пока прорезь не захватит хвостовик. Вставку придержите пальцем.</p>
+        </li>
+        <li class="step-card" data-group="В руке, не касаясь детали">
+          <div class="step-card__fig"><div class="step-card__drw" data-cutaway-state="4"></div><img class="step-card__media" src="media/04-step-rod-tip-out.jpg" width="735" height="784" alt="Вставка сжата во втулке, конец штока вышел наружу" loading="lazy"></div>
+          <p class="step-card__num tabular">4</p><h4 class="t-h3">Сжать во втулке</h4><p>Вращайте по часовой стрелке: вставка вкручивается во втулку и сжимается. Остановитесь, когда конец штока покажется снаружи.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="steps__part">
+      <h3 class="steps__group">У детали</h3>
+      <ol class="steps__list" role="list" start="5">
+        <li class="step-card" data-group="У детали">
+          <div class="step-card__fig"><div class="step-card__drw" data-cutaway-state="5"></div><img class="step-card__media" src="media/06-bushing-face-tip.jpg" width="550" height="678" alt="Конец штока выступает из торца втулки" loading="lazy"></div>
+          <p class="step-card__num tabular">5</p><h4 class="t-h3">Найти отверстие</h4><p>Вставьте конец штока в подготовленное резьбовое отверстие — он работает как центрирующий штифт.</p>
+        </li>
+        <li class="step-card" data-group="У детали">
+          <div class="step-card__fig"><div class="step-card__drw" data-cutaway-state="6"></div><img class="step-card__media" src="media/06-step-pressed-to-part.jpg" width="517" height="679" alt="Торец втулки плотно прижат к детали" loading="lazy"></div>
+          <p class="step-card__num tabular">6</p><h4 class="t-h3">Прижать торец</h4><p>Плотно прижмите торец втулки к детали — вставка встанет перпендикулярно и соосно отверстию.</p>
+        </li>
+        <li class="step-card" data-group="У детали">
+          <div class="step-card__fig"><div class="step-card__drw" data-cutaway-state="7"></div><img class="step-card__media" src="media/05-step-tip-in-hole.jpg" width="501" height="605" alt="Установщик на корпусной детали" loading="lazy"></div>
+          <p class="step-card__num tabular">7</p><h4 class="t-h3">Вкрутить</h4><p>Не ослабляя нажим, вращайте рукоятку — сжатая вставка легко входит в резьбу.</p>
+        </li>
+        <li class="step-card" data-group="У детали">
+          <div class="step-card__fig"><div class="step-card__drw" data-cutaway-state="8"></div><div class="step-card__media step-card__media--drw" role="img" aria-label="Вставка чуть ниже поверхности детали">
+            <svg class="drw" viewBox="60 140 280 200" aria-hidden="true">
+              <path class="d-part" data-hole="left" data-top="180" data-bottom="330"/>
+              <path class="d-part" data-hole="right" data-top="180" data-bottom="330"/>
+              <g data-coil-static="186 9 17"></g>
+              <path class="d-dim" d="M120 180H280"/>
+            </svg></div></div>
+          <p class="step-card__num tabular">8</p><h4 class="t-h3">Готово</h4><p>Инструмент отпустил деталь — вставка установлена. Проверьте пальцем: она чуть ниже поверхности.</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="cta-row">
+    <a class="btn" href="#podobrat">Подобрать установщик</a>
+    <a class="tel link" href="tel:+375173555442">+375 17 355-54-42</a>
+  </div>
+</section>
+
+<!-- Как понять, что готово -->
+<section id="gotovo" class="sec" data-section="done">
+  <div class="sec-head">
+    <h2 class="t-h2">Как понять, что готово</h2>
+    <p>Пока вставка не вышла из втулки целиком, инструмент и деталь связаны через неё. Связь пропала — вставка на месте. Проверьте пальцем: она должна быть чуть ниже поверхности. Если нет — доверните штоком.</p>
+  </div>
+  <div class="duo">
+    <figure>
+      <div class="panel panel--photo">
+        <div class="drw-wrap" style="position:relative; width:66%; aspect-ratio:400/280">
+          <svg class="drw" viewBox="0 80 400 280" style="width:100%" aria-hidden="true">
+            <line class="d-axis" x1="200" y1="96" x2="200" y2="356"/>
+            <path class="d-part" data-hole="left" data-top="180" data-bottom="356"/>
+            <path class="d-part" data-hole="right" data-top="180" data-bottom="356"/>
+            <g data-coil-static="186 9 17"></g>
+            <path class="d-dim" d="M140 180H260"/>
+          </svg>
+          <div class="co co--up" data-align="center" style="--x:50%; --y:37%; --len:4.5rem"><span class="co__lead"></span><span class="co__label">Чуть ниже поверхности</span></div>
+        </div>
+      </div>
+      <figcaption class="cap"><h3 class="t-h3">Проверка пальцем</h3><p>Верх вставки — чуть ниже поверхности детали. Выступает — доверните штоком.</p></figcaption>
+    </figure>
+    <figure>
+      <img class="photo" src="media/05-mistake-overscrewed.jpg" width="418" height="528" alt="Вставка вышла из втулки наружу" loading="lazy" style="object-position: 100% 100%">
+      <figcaption class="cap"><h3 class="t-h3">Перекрутили — не страшно</h3><p>Вставка, вышедшая из втулки наружу, мешает. Прогоните её через втулку и используйте снова.</p></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- The one dark band -->
+<section class="band" data-section="figures" aria-labelledby="figs-title">
+  <div class="band__panel">
+    <img class="band__img" src="media/banner-housing-dark-1.webp" width="3168" height="1344" alt="" loading="lazy" data-placeholder="ai-photo">
+    <h2 id="figs-title" class="k-sr-only">Коротко об установщике</h2>
+    <div class="figs">
+      <div><p class="fig">1,0–3,0<small>D</small></p><p>длина вставок, которые принимает гнездо</p></div>
+      <div><p class="fig">90°</p><p>торец втулки держит вставку перпендикулярно детали</p></div>
+      <div><p class="fig">2 в 1</p><p>шток вынимается и работает как установщик-вилка</p></div>
+      <div><p class="fig">1<small>размер</small></p><p>на один установщик — размер выгравирован на корпусе</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Совет из цеха -->
+<section id="sovet" class="sec" data-section="tip">
+  <div class="sec-head sec-head--narrow">
+    <h2 class="t-h2" style="text-align:center">Совет из цеха</h2>
+    <p>Для мелких и лёгких деталей зажмите установщик в тисках и подносите деталь к инструменту. Одна рука держит деталь, другая вращает рукоятку.</p>
+    <p>Деталь не нужно закреплять и откреплять — производительность заметно растёт. Мы проверили этот способ на вставках <span class="tabular">M8</span>.</p>
+  </div>
+  <div class="duo">
+    <figure><img class="photo" src="media/07-tip-vise-1.jpg" width="582" height="612" alt="Установщик зажат в тисках" loading="lazy" style="object-position: 50% 60%"></figure>
+    <figure><img class="photo" src="media/07-tip-vise-2.jpg" width="582" height="646" alt="Деталь подносят к установщику в тисках" loading="lazy" style="object-position: 40% 70%"></figure>
+  </div>
+</section>
+
+<!-- Два в одном + честный минус -->
+<section id="dva" class="sec" data-section="two-in-one">
+  <div class="sec-head">
+    <h2 class="t-h2">Два в одном</h2>
+    <p>Шток вынимается из корпуса и работает как обычный установщик типа «вилка» — без предварительного сжатия. Для мест, куда корпус не подходит.</p>
+  </div>
+  <div class="panel wide">
+    <div class="toggle" role="group" aria-label="Режим инструмента">
+      <button type="button" aria-pressed="true" data-mode="press">Со сжатием</button>
+      <button type="button" aria-pressed="false" data-mode="fork">Как вилка</button>
+    </div>
+    <div class="wide__drawing" data-fork></div>
+    <p class="fork__label" data-fork-label aria-live="polite">Установщик со сжатием</p>
+  </div>
+  <div class="split">
+    <h3 class="t-h3">Честный минус</h3>
+    <p>Установщик крупнее простых вилочных и винтовых, поэтому подходит не везде. Ради этого шток и сделан съёмным.</p>
+  </div>
+</section>
+
+<!-- Размеры -->
+<section id="razmery" class="sec" data-section="sizes">
+  <div class="sec-head">
+    <h2 class="t-h2">Размеры</h2>
+    <p>Один установщик — один размер вставки. Размер выгравирован на корпусе, например <span class="tabular">ST5×0,8</span> или <span class="tabular">ST12×1,75</span>. Напишите, какие резьбы у вас в работе, — подберём.</p>
+  </div>
+  <div class="panel lineup"><img src="media/01-lineup-gold.jpg" width="872" height="329" alt="Установщики разных размеров в ряд" loading="lazy"></div>
+  <div class="duo duo--narrow">
+    <figure>
+      <img class="photo photo--wide" src="media/03-marking-st5x0.8.jpg" width="356" height="232" alt="Маркировка ST5×0.8 на корпусе" loading="lazy">
+      <figcaption class="cap fine">Маркировка на корпусе: ST5×0,8. Фото из статьи shlif.by</figcaption>
+    </figure>
+    <figure>
+      <div class="panel panel--wide" data-engraving></div>
+      <figcaption class="cap fine">На каждом установщике — свой размер резьбы</figcaption>
+    </figure>
+  </div>
+  <div class="cta-row">
+    <a class="btn" href="#podobrat">Подобрать установщик</a>
+    <a class="tel link" href="tel:+375173555442">+375 17 355-54-42</a>
+  </div>
+</section>
+
+<!-- Заявка -->
+<section id="podobrat" class="sec" data-section="request">
+  <div class="request">
+    <div class="request__intro">
+      <h2 class="t-h2">Подобрать установщик</h2>
+      <p>Напишите размеры резьбы и сколько инструментов нужно. Ответим и подберём установщик под ваши вставки.</p>
+      <dl class="contacts">
+        <div><dt>Телефоны</dt><dd><a class="tel" href="tel:+375173555442">+375 17 355-54-42</a><br><a class="tel" href="tel:+375172758635">+375 17 275-86-35</a></dd></div>
+        <div><dt>Почта</dt><dd><a href="mailto:shlif2002@mail.ru">shlif2002@mail.ru</a><br><a href="mailto:2105442@mail.ru">2105442@mail.ru</a></dd></div>
+        <div><dt>Адрес</dt><dd>220037, Минск, ул. Передовая, 15, пом. 11</dd></div>
+      </dl>
+    </div>
+    <form class="form" data-steps novalidate data-placeholder="form-recipient">
+      <p class="form__progress" data-progress="Шаг {n} из {total}">Шаг 1 из 2</p>
+      <div data-step class="is-active">
+        <div class="field"><label for="f-sizes">Размеры резьбы</label><input id="f-sizes" name="sizes" required placeholder="Например: M8, M5×0,8" autocomplete="off"></div>
+        <div class="field"><label for="f-qty">Количество</label><input id="f-qty" name="qty" placeholder="Например: по 2 шт." autocomplete="off"></div>
+        <div class="form__nav"><button class="btn" type="button" data-next>Дальше</button></div>
+      </div>
+      <div data-step>
+        <div class="field"><label for="f-name">Имя</label><input id="f-name" name="name" required autocomplete="name"></div>
+        <div class="field"><label for="f-contact">Телефон или e-mail</label><input id="f-contact" name="contact" required autocomplete="tel"></div>
+        <label class="consent"><input type="checkbox" name="consent" required> Согласен на обработку персональных данных для ответа на заявку</label>
+        <div class="form__nav"><button class="btn" type="submit">Отправить заявку</button><button class="btn btn--ghost" type="button" data-back>Назад</button></div>
+      </div>
+      <div data-success hidden>
+        <h3 class="t-h3">Заявка отправлена</h3>
+        <p>Ответим на телефон или почту, которые вы указали.</p>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <a class="wordmark" href="#top" data-placeholder="wordmark">shlif</a>
+  <p>shlif.by · 220037, Минск, ул. Передовая, 15, пом. 11</p>
+  <p><a class="tel link" href="tel:+375173555442">+375 17 355-54-42</a></p>
+</footer>
+
+<div class="fab">
+  <div class="fab__panel" id="fab-panel" hidden>
+    <a class="tel" href="tel:+375173555442">+375 17 355-54-42</a>
+    <a class="tel" href="tel:+375172758635">+375 17 275-86-35</a>
+    <a href="mailto:shlif2002@mail.ru">shlif2002@mail.ru</a>
+    <p data-placeholder="messengers">Viber и Telegram — уточняем</p>
+  </div>
+  <button class="fab__btn" type="button" aria-expanded="false" aria-controls="fab-panel" data-fab>Связаться</button>
+</div>
+
+<div class="sticky-cta" data-sticky-cta data-mobile-only>
+  <a class="btn" href="#podobrat">Подобрать установщик</a>
+  <a class="btn btn--ghost" href="tel:+375173555442">Позвонить</a>
+</div>
+
+<div id="menu" class="menu" data-menu hidden role="dialog" aria-modal="true" aria-label="Меню">
+  <div class="menu__top"><span class="wordmark">shlif</span><button type="button" data-menu-close>Закрыть</button></div>
+  <nav>
+    <a href="#szhatie">Зачем сжатие</a>
+    <a href="#ustroystvo">Устройство</a>
+    <a href="#vosem">Восемь движений</a>
+    <a href="#gotovo">Как понять, что готово</a>
+    <a href="#razmery">Размеры</a>
+    <a href="#podobrat">Подобрать установщик</a>
+  </nav>
+  <div class="menu__contacts">
+    <a class="tel" href="tel:+375173555442">+375 17 355-54-42</a>
+    <a class="tel" href="tel:+375172758635">+375 17 275-86-35</a>
+    <a href="mailto:shlif2002@mail.ru">shlif2002@mail.ru</a>
+  </div>
+</div>
+
+<template id="tpl-cutaway">
+  <svg class="drw cut" viewBox="0 -150 400 1010" aria-hidden="true">
+    <line class="d-axis" x1="200" y1="-140" x2="200" y2="850"/>
+    <g data-part="part">
+      <path class="d-part" data-part="part-left"/>
+      <path class="d-part" data-part="part-right"/>
+    </g>
+    <g data-part="tool">
+      <rect class="d-cavity" x="174" y="470" width="52" height="115"/>
+      <g data-part="rod">
+        <path class="d-rod" d="M187 47H213V430H208V600H203V592H197V600H192V430H187Z"/>
+        <path class="d-rod" data-part="crank-arm" d="M200 40H292V47H200Z"/>
+        <rect class="d-rod" data-part="crank-grip" x="286" y="0" width="12" height="44" rx="6"/>
+      </g>
+      <path class="d-body" d="M160 220H186V470H174V590H160Z"/>
+      <path class="d-body" d="M214 220H240V470H214Z"/>
+      <path class="d-body" d="M226 578H240V590H226Z"/>
+      <path class="d-dim" d="M240 470V578"/>
+      <path class="d-gold" d="M154 590H185V660H160L154 654Z"/>
+      <path class="d-gold" d="M215 590H246V654L240 660H215Z"/>
+      <path class="d-thin" data-part="bore"/>
+    </g>
+    <g data-part="coil"></g>
+    <g data-part="guide">
+      <path class="d-dim" d="M252 668V606"/>
+      <path class="d-thin" data-part="guide-arc" pathLength="1" stroke-dasharray="1" d="M252 646A22 22 0 0 1 274 668"/>
+      <text class="d-note" x="257" y="634">90°</text>
+    </g>
+  </svg>
+</template>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+<script src="kit/kit.js" defer></script>
+<script src="drawings.js" defer></script>
+<script src="motion.js" defer></script>
+<p class="concept-note" style="margin:0;padding:12px 16px 88px;font:12px/1.4 system-ui,sans-serif;text-align:center;opacity:.6">Concept design. Photos are AI-generated placeholders, not real work or people.</p>
+</body>
+</html>
